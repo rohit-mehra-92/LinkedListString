@@ -45,6 +45,33 @@ public class LinkedList {
             currNode = currNode.next;
         }
         System.out.print("Null");
+        System.out.println();
+    }
+
+    public void deleteFirst() {
+        if (head == null) {
+            System.out.println("list is empty");
+            return;
+        }
+        head = head.next;
+    }
+
+    public void deleteLast() {
+        if (head == null) {
+            System.out.println("list is empty");
+            return;
+        }
+        if (head.next == null) {
+            head = null;
+            return;
+        }
+        Node secondLast = head;
+        Node lastNode = head.next;
+        while (lastNode.next != null) {
+            lastNode = lastNode.next;
+            secondLast = secondLast.next;
+        }
+        secondLast.next = null;
     }
 
     public static void main(String arg[]) {
@@ -53,7 +80,19 @@ public class LinkedList {
         list.addFirst("is");
         list.addFirst("This");
 
+        list.printList();
+
         list.addLast("list");
+        list.addLast("but");
+        list.addLast("not");
+        list.addLast("least");
+
+        list.printList();
+
+        list.deleteFirst();
+        list.printList();
+
+        list.deleteLast();
         list.printList();
     }
 }
