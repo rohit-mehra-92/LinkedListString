@@ -86,6 +86,23 @@ public class LinkedList {
         return size;
     }
 
+    public void reverseIterative() {
+        if (head == null || head.next == null) {
+            return;
+        }
+        Node prev = head;
+        Node curr = head.next;
+
+        while (curr != null) {
+            Node next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        head.next = null;
+        head = prev;
+    }
+
     public static void main(String arg[]) {
         LinkedList list = new LinkedList();
         list.addFirst("a");
@@ -110,5 +127,12 @@ public class LinkedList {
         list.printList();
 
         System.out.println(list.getSize());
+
+        list.addFirst("this");
+        list.printList();
+        System.out.println(list.getSize());
+
+        list.reverseIterative();
+        list.printList();
     }
 }
